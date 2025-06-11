@@ -1,4 +1,13 @@
-venv/
 __pycache__/
-*.pyc
+*.py[cod]
+*.egg-info/
+
+# Virtualenv
+venv/
+
+# Environment variables
 .env
+
+# VSCode and editor configs
+.vscode/
+*.swp
