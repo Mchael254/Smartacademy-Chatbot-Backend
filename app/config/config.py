@@ -1,13 +1,14 @@
 import os
 from pathlib import Path
 from pydantic_settings import BaseSettings, SettingsConfigDict
+from typing import Optional
 
 BASE_DIR = Path(__file__).resolve().parent.parent  
 
 class Settings(BaseSettings):
     SUPABASE_URL: str
     SUPABASE_KEY: str
-    MODEL_API_URL: str
+    MODEL_API_URL: Optional[str] = None
 
     APP_PORT: int = 8000
     APP_HOST: str = "0.0.0.0"
