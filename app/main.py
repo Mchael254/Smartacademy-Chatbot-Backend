@@ -2,12 +2,17 @@ from fastapi import FastAPI
 import uvicorn
 from config.config import settings
 from config.dbConfig import supabase
+from routes import authRoutes
 
 app = FastAPI()
 
 @app.get("/")
 async def root():
     return {"message": "smartacademy chatbot"}
+
+
+#routes
+app.include_router(authRoutes.router, prefix="/auth")
 
 @app.on_event("startup")
 async def check_supabase_connection():
