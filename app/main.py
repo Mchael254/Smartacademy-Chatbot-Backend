@@ -1,4 +1,7 @@
 from fastapi import FastAPI
+from dotenv import load_dotenv
+load_dotenv()
+
 import uvicorn
 from config.config import settings
 from config.dbConfig import supabase
