@@ -5,8 +5,6 @@ from controllers.auth.loginController import login_user
 from controllers.auth.sessionController import logout_user
 from controllers.auth.sessionController import refresh_token
 
-
-
 router = APIRouter()
 
 @router.post("/signup", tags=["Auth"])
@@ -20,7 +18,6 @@ async def signin_route(payload:LoginPayload):
 @router.get("/logout",tags=["Auth"])
 async def signout():
     return await logout_user()
- SCB-7
 
 @router.get("/token_refresh",tags=["Auth"])
 async def refresh_tokens():
