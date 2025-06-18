@@ -20,6 +20,7 @@ async def signin_route(payload:LoginPayload):
 @router.get("/logout",tags=["Auth"])
 async def signout():
     return await logout_user()
+ SCB-7
 
 @router.get("/token_refresh",tags=["Auth"])
 async def refresh_tokens():
