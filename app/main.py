@@ -5,7 +5,7 @@ load_dotenv()
 import uvicorn
 from config.config import settings
 from config.dbConfig import supabase
-from routes import authRoutes
+from routes import authRoutes,apiRoutes
 
 app = FastAPI()
 
@@ -16,6 +16,8 @@ async def root():
 
 #routes
 app.include_router(authRoutes.router, prefix="/auth")
+app.include_router(apiRoutes.router, prefix="/api")
+
 
 @app.on_event("startup")
 async def check_supabase_connection():
@@ -35,3 +37,10 @@ if __name__ == "__main__":
         port=settings.APP_PORT,
         reload=True
     )
+
+data = supabase.table("Stakeholders").select("email").execute()
+# .eq("email", "ngolimwachoo@gmail.com").execute()
+
+# Assert we pulled real data.
+# assert len(data.data) > 0
+print(data)
