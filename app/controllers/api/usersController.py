@@ -3,13 +3,14 @@ from config.dbConfig import supabase
 
 router = APIRouter()
 
-@router.get("/users_and_members")
+@router.get("/all_users")
 async def all_users():
     """
     Return all stakeholders where role is 'user' OR 'member'.
     """
     try:
         resp = supabase.table("Stakeholders").select("*").in_("role", ["user", "member"]).execute()
+        print(resp)
         
         if not resp.data:
             raise HTTPException(
