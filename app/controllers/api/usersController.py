@@ -3,7 +3,7 @@ from config.dbConfig import supabase
 
 router = APIRouter()
 
-@router.get("/users_and_members")
+@router.get("/all_users")
 async def all_users():
     """
     Return all stakeholders where role is 'user' OR 'member'.
