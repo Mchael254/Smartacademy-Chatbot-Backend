@@ -37,7 +37,7 @@ async def get_user_by_id(id: str):
     Return a single stakeholder by ID if role is 'user' or 'member'.
     """
     try:
-        resp = supabase.table("Stakeholders").select("*").eq("user_id", id).in_("role", ["user", "member"]).execute()
+        resp = supabase.table("Stakeholders").select("email,username").eq("user_id", id).in_("role", ["user", "member"]).execute()
 
         if not resp.data:
             raise HTTPException(
