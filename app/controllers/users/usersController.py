@@ -10,7 +10,7 @@ async def all_users():
     """
     try:
         resp = supabase.table("Stakeholders").select("*").in_("role", ["user", "member"]).execute()
-        print(resp)
+        # print(resp)
         
         if not resp.data:
             raise HTTPException(
