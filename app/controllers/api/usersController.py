@@ -58,7 +58,6 @@ async def get_user_by_id(id: str):
 @router.delete("/all_users/{id}")
 async def delete_user_by_id(id: str):
     try:
-        # Step 1: Check if user exists with valid role
         resp = supabase.table("Stakeholders").select("user_id").eq("user_id", id).in_("role", ["user", "member"]).execute()
 
         if not resp.data:
@@ -67,10 +66,8 @@ async def delete_user_by_id(id: str):
                 detail=f"User/member with id '{id}' not found."
             )
 
-        # Step 2: Proceed with deletion
         delete_resp = supabase.table("Stakeholders").delete().eq("user_id", id).execute()
 
-        # Step 3: Check if anything was deleted
         if not delete_resp.data:
             raise HTTPException(status_code=500, detail="Delete failed or no data returned from Supabase.")
 
