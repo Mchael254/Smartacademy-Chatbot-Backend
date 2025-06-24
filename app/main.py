@@ -16,7 +16,7 @@ async def root():
 
 #routes
 app.include_router(authRoutes.router, prefix="/auth")
-app.include_router(userRoutes.router, prefix="/users")
+app.include_router(userRoutes.router, prefix="/api")
 
 
 @app.on_event("startup")
