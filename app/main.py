@@ -6,8 +6,21 @@ import uvicorn
 from config.config import settings
 from config.dbConfig import supabase
 from routes import authRoutes, userRoutes
+from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI()
+
+origins = [
+    "*",
+]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 @app.get("/")
 async def root():
