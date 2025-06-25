@@ -22,7 +22,7 @@ async def signup_user(payload: StakeholderSignup):
             "options": {
                 "data": {
                     "username": payload.username,
-                    "role": payload.role or "user"
+                    "role": payload.role or "user" #optional default user
                 }
             }
         })
@@ -39,7 +39,7 @@ async def signup_user(payload: StakeholderSignup):
                 "user_id": user.id,
                 "email": payload.email,
                 "username": payload.username,
-                "role": payload.role or "user",
+                "role": payload.role or "user", 
                 "email_confirmation_required": True
             }
             
