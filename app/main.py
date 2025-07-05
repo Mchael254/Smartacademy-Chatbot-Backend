@@ -6,7 +6,7 @@ load_dotenv()
 import uvicorn
 from config.config import settings
 from config.dbConfig import supabase
-from routes import authRoutes, userRoutes
+from routes import authRoutes, userRoutes,modelRoutes
 from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI()
@@ -32,6 +32,7 @@ async def root():
 # routes
 app.include_router(authRoutes.router, prefix="/auth")
 app.include_router(userRoutes.router, prefix="/api")
+app.include_router(modelRoutes.router, prefix="/model")
 
 
 @app.on_event("startup")
